@@ -11,7 +11,7 @@ class App extends React.Component {
 
     this.state = {
       products: data.products,
-      cartItems: [],
+      cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]") ,
       size: '',
       sort: '',
     };
@@ -20,7 +20,6 @@ class App extends React.Component {
   sortProducts = (event) => {
     //impl
     const sort = event.target.value;
-
     console.log(sort,  this.state.products);
     this.setState((state) => ({
       sort,
@@ -42,20 +41,21 @@ class App extends React.Component {
     }));
   };
 
+  createOrder = (order) => {
+    alert("Need to save order for " + order.name)
+  }
+
   removeFromCart = (product) => {
-    
-    const cartItems = this.state.cartItems.slice();
-    
+    const cartItems = this.state.cartItems.slice(); 
     this.setState({
-      cartItems: cartItems.filter(x =>  x._id !== product._id),
+      cartItems: cartItems.filter((x)=>  x._id !== product._id),
     });
-  
+    localStorage.setItem("cartItems", JSON.stringify(cartItems.filter((x)=>  x._id !== product._id)));
   };
 
   addToCart = (product) => {
     const cartItems = this.state.cartItems.slice();
     let alreadyInCart = false;
-    console.log("00000", cartItems)
     cartItems.forEach(item=>{
       console.log(item)
       if(item._id === product._id) {
@@ -68,6 +68,7 @@ class App extends React.Component {
       console.log(cartItems)
     }
     this.setState({cartItems})
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }
 
  
@@ -104,7 +105,13 @@ class App extends React.Component {
                 sortProducts={this.sortProducts}></Filter>
               <Products products={this.state.products} addToCart={this.addToCart} />
             </div>
-            <div className="sidebar"><Cart cartItems={this.state.cartItems}  removeFromCart={this.removeFromCart}/></div>
+            <div className="sidebar">
+              <Cart 
+                cartItems={this.state.cartItems}  
+                removeFromCart={this.removeFromCart} 
+                createOrder={this.createOrder}
+              />
+            </div>
           </div>
         </main>
         <footer>All rights is reserved.</footer>
