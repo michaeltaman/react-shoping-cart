@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import formatCurrency from '../util';
+import {formatCurrency, formatDate} from '../util';
 import Fade from 'react-reveal/Fade'
 
 import { connect } from 'react-redux';
@@ -75,7 +75,7 @@ class Cart extends Component {
                   </li>
                   <li>
                     <div>Date:</div>
-                    <div>{order.createdAt}</div>
+                    <div>{formatDate(order.createdAt)}</div>
                   </li>
                   <li>
                     <div>Total:</div>
