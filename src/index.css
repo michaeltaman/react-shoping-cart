@@ -44,6 +44,8 @@ header{
   color: #ffffff;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
 }
 
 header a{
@@ -262,7 +264,7 @@ order-details li div {
 }
 
 .order-details .items {
-  text-align: right;
+  text-align: rightt;
   padding: 0;
 }
 
@@ -270,3 +272,21 @@ order-details li div {
   color: green;
 }
 
+/* Orders */
+.orders {
+  width: 100%;
+  padding: 10px;
+}
+
+tbody > tr:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+
+td{
+  padding: 8px;
+}
+
+th{
+  text-align: left;
+  padding: 10px 10px;
+}
