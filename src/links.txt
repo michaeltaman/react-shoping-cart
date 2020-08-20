@@ -15,4 +15,9 @@ Last updated 6/2020
 English
 English [Auto]
 
-https://www.udemy.com/course/build-ecommerce-website-by-react-redux-in-one-hour/learn/lecture/20216376#questions
+Udemy: >>--->
+>>---->  https://www.udemy.com/course/build-ecommerce-website-by-react-redux-in-one-hour/learn/lecture/20216376#questions
+
+
+# Step 16: Connection string to MONGODB_URL (for Heroku deployment)
+mongodb+srv://arab-react:P1234@cluster0.fo9ve.mongodb.net/arab-react?retryWrites=true&w=majority
